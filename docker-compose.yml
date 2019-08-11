@@ -7,9 +7,15 @@ services:
         image: 'app-node'
         container_name: app-node
         restart: always
+        environment: 
+            DB_IP_HOST: ${DB_IP_HOST}
+            DB_PORT: 3306
         ports:
             - '8000:8000'
-        command: bash -c "node index.js"
+        command: > 
+            bash -c "python wait-host-container.py $${DB_IP_HOST} $${DB_PORT}
+            && npx sequelize db:migrate
+            && node server.js"
     db:
         image: 'mysql:5.7'
         container_name: express_sequelize

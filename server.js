@@ -7,15 +7,10 @@ app.use(bodyparser.urlencoded({ extended : false}));
 app.use(bodyparser.json());
 const port = process.env.PORT || 8000;
 const router = express.Router();
-const bcrypt = require('bcrypt');
 
 
-function middleAuthentication(req, res, next) {    
-    next();
-}
-
-router.post('/authentication', middleAuthentication, (req, res, next)=> {
-    res.send('ok');
+router.get('/status', (req, res) => {
+    res.json({message:'ok'});
 });
 
 app.use('/api', router);
