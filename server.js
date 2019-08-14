@@ -6,12 +6,20 @@ app.use(compression());
 app.use(bodyparser.urlencoded({ extended : false}));
 app.use(bodyparser.json());
 const port = process.env.PORT || 8000;
-const router = express.Router();
+const routerInicial = express.Router();
+const routerAluno = require('./app/routes/aluno');
+const routerSalaAula = require('./app/routes/salaaula');
 
-
-router.get('/status', (req, res) => {
-    res.json({message:'ok'});
+routerInicial.get('/status', (req, res) => {
+    res.json({status:'ok'});
 });
 
-app.use('/api', router);
+
+routers = [
+    routerInicial,
+    routerAluno,
+    routerSalaAula
+];
+
+app.use('/api', routers);
 app.listen(port);

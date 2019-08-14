@@ -14,7 +14,9 @@ services:
             - '8000:8000'
         command: > 
             bash -c "python wait-host-container.py $${DB_IP_HOST} $${DB_PORT}
+            && npx sequelize db:create
             && npx sequelize db:migrate
+            && npx sequelize db:seed:all
             && node server.js"
     db:
         image: 'mysql:5.7'
@@ -22,6 +24,5 @@ services:
         restart: always
         environment:
             MYSQL_ROOT_PASSWORD: root
-            MYSQL_DATABASE: express_sequelize
         ports:
             - '3306:3306'

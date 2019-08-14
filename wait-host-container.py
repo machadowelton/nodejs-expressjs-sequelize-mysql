@@ -23,6 +23,6 @@ while( not check_host_port(HOST, PORT)):
     print('Try connect to host-container. Host: ' + HOST + ', Port: ' + str(PORT) + '. Attempt: ' + str(number) )
     time.sleep(5)
     number += 1
-    if number == 12:
+    if number == 24:
         raise Exception('Attempts number connections exceeded to connect on host-container. Attempt: ' + str(number))
 print('Connected on host-container: Host: ' + HOST + ', Port: ' + str(PORT) + ' with attempt: ' + str(number))
