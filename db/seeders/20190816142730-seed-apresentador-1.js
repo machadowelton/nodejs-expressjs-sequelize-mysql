@@ -2,21 +2,21 @@
 
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.bulkInsert('SalaAulas', [
+    return queryInterface.bulkInsert('Apresentadors',[
       {
-        nomeSala: 'brasil',
+        nomeApresentador: 'Adriana Bruna da Conceição',
         createdAt: new Date(),
         updatedAt: new Date()
       },
       {
-        nomeSala: 'argentina',
+        nomeApresentador: 'Clara Rosa Martins',
         createdAt: new Date(),
         updatedAt: new Date()
       }
-    ], {});
+    ],{});
   },
 
   down: (queryInterface, Sequelize) => {
-    return queryInterface.bulkDelete('SalaAulas', null, {});
+    return queryInterface.bulkDelete('Apresentadors', null, {});
   }
 };

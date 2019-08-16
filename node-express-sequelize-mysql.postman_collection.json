@@ -1,0 +1,715 @@
+{
+	"info": {
+		"_postman_id": "01eca939-0b57-47ca-9453-d66d698588b9",
+		"name": "node-express-sequelize-mysql",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "salaaula",
+			"item": [
+				{
+					"name": "buscarPorId - 1",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "2f5adcd9-cccd-4de3-bb2d-f4f1d6b41ab8",
+								"exec": [
+									"pm.test(\"Verifica corpo salaaula - buscarPorId - 1\", () => {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.id).to.eql(1);",
+									"    pm.expect(jsonData.nomeSala).to.eql(\"brasil\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://{{host_app}}:8000/api/salaaula/1",
+							"protocol": "http",
+							"host": [
+								"{{host_app}}"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"salaaula",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "buscarTodos",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "ce3873bb-3519-4ad2-a262-2c44eb1b8507",
+								"exec": [
+									"pm.test(\"Verifica corpo salaaula - buscarTodos(brasil)\", () => {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData[0].id).to.eql(1);",
+									"    pm.expect(jsonData[0].nomeSala).to.eql(\"brasil\");",
+									"});",
+									"pm.test(\"Verifica corpo salaaula - buscarTodos(argentina)\", () => {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData[1].id).to.eql(2);",
+									"    pm.expect(jsonData[1].nomeSala).to.eql(\"argentina\");",
+									"});",
+									"/**/"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://{{host_app}}:8000/api/salaaula",
+							"protocol": "http",
+							"host": [
+								"{{host_app}}"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"salaaula"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "criar - 3",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "db470c19-bcc7-4956-a49c-7d9803c5fad2",
+								"exec": [
+									"pm.test(\"Verifica corpo salaaula - criar - 3\", () => {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.id).to.eql(3);",
+									"    pm.expect(jsonData.nomeSala).to.eql(\"chile\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"nomeSala\":\"chile\"\n}"
+						},
+						"url": {
+							"raw": "http://{{host_app}}:8000/api/salaaula",
+							"protocol": "http",
+							"host": [
+								"{{host_app}}"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"salaaula"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "atualizar - 3",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "dc64057b-06b1-4bb2-80b0-a89cbdb7c88e",
+								"exec": [
+									"pm.test(\"Verifica corpo salaaula - atualizar - 3\", () => {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.id).to.eql(3);",
+									"    pm.expect(jsonData.nomeSala).to.eql(\"paraguai\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": " {\r\n        \"id\": 3,\r\n        \"nomeSala\": \"paraguai\"\r\n    }"
+						},
+						"url": {
+							"raw": "http://{{host_app}}:8000/api/salaaula",
+							"protocol": "http",
+							"host": [
+								"{{host_app}}"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"salaaula"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "criar - 4",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "90b17a0f-f978-48c9-a0e9-cad3e123a77b",
+								"exec": [
+									"pm.test(\"Verifica corpo salaaula - criar - 4\", () => {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.id).to.eql(4);",
+									"    pm.expect(jsonData.nomeSala).to.eql(\"bolivia\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"nomeSala\":\"bolivia\"\n}"
+						},
+						"url": {
+							"raw": "http://{{host_app}}:8000/api/salaaula",
+							"protocol": "http",
+							"host": [
+								"{{host_app}}"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"salaaula"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "remover - 3",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "279ab5c4-733f-4df3-8c18-f3a8a95c47b9",
+								"exec": [
+									"pm.test(\"Verifica corpo salaaula - remover - 3\", () => {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.mensagem).to.eql(\"Deletado\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://{{host_app}}:8000/api/salaaula/3",
+							"protocol": "http",
+							"host": [
+								"{{host_app}}"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"salaaula",
+								"3"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "aluno",
+			"item": [
+				{
+					"name": "buscarPorId - 1",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "49ecf03a-91d1-4712-a309-bb161eb2038c",
+								"exec": [
+									"pm.test(\"Verifica corpo aluno - buscarPorId - 1\", () => {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.id).to.eql(1);",
+									"    pm.expect(jsonData.nomeAluno).to.eql(\"Joyvis Santana\");",
+									"    pm.expect(jsonData.salaAulaId).to.eql(1);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{host_app}}:8000/api/salaaula/1/aluno/1",
+							"protocol": "http",
+							"host": [
+								"{{host_app}}"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"salaaula",
+								"1",
+								"aluno",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "buscar Todos - 2",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "57af7346-ae2f-44dc-8ebe-3b05f44ea7f3",
+								"exec": [
+									"pm.test(\"Verifica corpo aluno - buscarTodos(RW)\", () => {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData[0].id).to.eql(2);",
+									"    pm.expect(jsonData[0].salaAulaId).to.eql(2);",
+									"    pm.expect(jsonData[0].nomeAluno).to.eql(\"Richard William\");",
+									"});",
+									"pm.test(\"Verifica corpo aluno - buscarTodos(WM)\", () => {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData[1].id).to.eql(3);",
+									"    pm.expect(jsonData[1].salaAulaId).to.eql(2);",
+									"    pm.expect(jsonData[1].nomeAluno).to.eql(\"Welton Machado\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{host_app}}:8000/api/salaaula/2/aluno",
+							"protocol": "http",
+							"host": [
+								"{{host_app}}"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"salaaula",
+								"2",
+								"aluno"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "inserir - 4",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "381d6c49-2ace-495f-a013-333826c6f810",
+								"exec": [
+									"pm.test(\"Verifica corpo aluno - criar - 4\", () => {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.id).to.eql(4);",
+									"    pm.expect(jsonData.nomeAluno).to.eql(\"Alberto Nobrega\");",
+									"    pm.expect(jsonData.salaAulaId).to.eql(1);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n        \"nomeAluno\": \"Alberto Nobrega\",\n        \"salaAulaId\": 1\n    }"
+						},
+						"url": {
+							"raw": "http://{{host_app}}:8000/api/salaaula/1/aluno",
+							"protocol": "http",
+							"host": [
+								"{{host_app}}"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"salaaula",
+								"1",
+								"aluno"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "buscar Todos - 1",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "bb8094fc-5a61-4977-8260-aae80cc99d82",
+								"exec": [
+									"pm.test(\"Verifica corpo aluno - buscarTodos(RW)\", () => {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData[0].id).to.eql(1)",
+									"    pm.expect(jsonData[0].salaAulaId).to.eql(1);",
+									"    pm.expect(jsonData[0].nomeAluno).to.eql(\"Joyvis Santana\");",
+									"});",
+									"pm.test(\"Verifica corpo aluno - buscarTodos(WM)\", () => {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData[1].id).to.eql(4);",
+									"    pm.expect(jsonData[1].salaAulaId).to.eql(1);",
+									"    pm.expect(jsonData[1].nomeAluno).to.eql(\"Alberto Nobrega\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{host_app}}:8000/api/salaaula/1/aluno",
+							"protocol": "http",
+							"host": [
+								"{{host_app}}"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"salaaula",
+								"1",
+								"aluno"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "atualizar - 4",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "4dd43c3e-14f1-44ea-8872-b67b7a23bae5",
+								"exec": [
+									"pm.test(\"Verifica corpo salaaula - atualizar - 4\", () => {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.mensagem).to.eql(\"Atualizado\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 4,\r\n    \"nomeAluno\": \"Alberto Nobrega\",\r\n    \"salaAulaId\": 2\r\n}"
+						},
+						"url": {
+							"raw": "http://{{host_app}}:8000/api/salaaula/1/aluno",
+							"protocol": "http",
+							"host": [
+								"{{host_app}}"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"salaaula",
+								"1",
+								"aluno"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete - 4",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "d21094a9-0210-4cd4-8e3d-782adb556f39",
+								"exec": [
+									"pm.test(\"Verifica corpo salaaula - remover - 3\", () => {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.mensagem).to.eql(\"Deletado\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://{{host_app}}:8000/api/salaaula/1/aluno/4",
+							"protocol": "http",
+							"host": [
+								"{{host_app}}"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"salaaula",
+								"1",
+								"aluno",
+								"4"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "apresentador",
+			"item": [
+				{
+					"name": "buscarPorId - 1",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{host_app}}:8000/api/apresentador/1",
+							"protocol": "http",
+							"host": [
+								"{{host_app}}"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"apresentador",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "buscarPorTodos - 1",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{host_app}}:8000/api/apresentador",
+							"protocol": "http",
+							"host": [
+								"{{host_app}}"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"apresentador"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "criar - 3",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"nome_apresentador\":\"Silvio Santos\"\n}"
+						},
+						"url": {
+							"raw": "http://{{host_app}}:8000/api/apresentador",
+							"protocol": "http",
+							"host": [
+								"{{host_app}}"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"apresentador"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "atualizar - 3",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"nome_apresentador\":\"Silvio Santos\"\n}"
+						},
+						"url": {
+							"raw": "http://{{host_app}}:8000/api/apresentador",
+							"protocol": "http",
+							"host": [
+								"{{host_app}}"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"apresentador"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "criar - 4",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"nome_apresentador\":\"Silvio Santos\"\n}"
+						},
+						"url": {
+							"raw": "http://{{host_app}}:8000/api/apresentador",
+							"protocol": "http",
+							"host": [
+								"{{host_app}}"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"apresentador"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deletar - 4",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://{{host_app}}:8000/api/apresentador/4",
+							"protocol": "http",
+							"host": [
+								"{{host_app}}"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"apresentador",
+								"4"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

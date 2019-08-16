@@ -8,7 +8,7 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },      
-      nome_aluno: {
+      nomeAluno: {
         type: Sequelize.STRING
       },
       createdAt: {
@@ -19,7 +19,7 @@ module.exports = {
         allowNull: false,
         type: Sequelize.DATE
       },
-      SalaAulaId: {
+      salaAulaId: {
         allowNull: false,
         type: Sequelize.INTEGER
       }

@@ -12,14 +12,14 @@ module.exports = {
             });
     },
     findAll(req, res) {
-        return Aluno.findAll({ where: { SalaAulaId: req.params.id } })
+        return Aluno.findAll({ where: { salaAulaId: req.params.id } })
             .then((alunos) => {
                 if (!alunos) throw ({ mensagem: 'Nao encontrado' })
                 res.json(alunos);
             })
             .catch((err) => {
                 ;
-                res.json(err);
+                res.status(500).json(err);
             });
     },
     save(req, res) {
@@ -29,7 +29,41 @@ module.exports = {
                 res.json(aluno);
             })
             .catch((err) => {
-                res.json(err);
+                res.status(500).json(err);
+            });
+    },
+    update(req, res) {
+        alunoUp = req.body;
+        return Aluno.findByPk(alunoUp.id)
+            .then((aluno) => {
+                if(!aluno) throw ({mensagem: 'Nao encontrado'});
+                aluno.update(alunoUp)
+                    .then((alunoupd) => {
+                        if(!alunoupd) throw({mensagem: 'Nao atualizado'});                        
+                        return res.json({mensagem: 'Atualizado'});
+                    })
+                    .catch((err) => {
+                        return res.status(500).json(err);
+                    });
+            })
+            .catch((err) => {
+                return res.status(500).json(err);
+            });
+    },
+    remove(req, res) {
+        return Aluno.findByPk(req.params.id_aluno)
+            .then((aluno) => {
+                if(!aluno) throw({mensagem: 'Não deletado'});
+                aluno.destroy()
+                    .then(() => {
+                        return res.json({mensagem: 'Deletado'});
+                    })
+                    .catch((err) => {
+                        return res.status(500).json(err);
+                    });
+            })
+            .catch((err) => {
+                return res.status(500).json(err);
             });
     }
 };

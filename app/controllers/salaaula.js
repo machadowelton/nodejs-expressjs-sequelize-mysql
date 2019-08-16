@@ -7,13 +7,17 @@ module.exports = {
                 if (!salaaula) throw ({ mensagem: 'Nada encontrado' });
                 res.json(salaaula)
             })
-            .catch((err) => { res.json(err) });
+            .catch((err) => {
+                res.status(500).json(err)
+            });
     },
     save(req, res) {
         return SalaAula.create(req.body)
-            .then((salaaula) => { res.json(salaaula) })
+            .then((salaaula) => {
+                res.json(salaaula)
+            })
             .catch((err) => {
-                res.json(err)
+                res.status(500).json(err)
             });
     },
     findAll(req, res) {
@@ -23,7 +27,7 @@ module.exports = {
                 res.json(salaaulas);
             })
             .catch((err) => {
-                res.json(err)
+                res.status(500).json(err)
             });
     },
     update(req, res) {
@@ -37,11 +41,11 @@ module.exports = {
                         return res.json(salaaulaUp);
                     })
                     .catch((err) => {
-                        return res.json({ mensagem: ' Nao atualizado' });
+                        return res.status(500).json({ mensagem: ' Nao atualizado' });
                     })
             })
             .catch((err) => {
-                return res.json(err);
+                return res.status(500).json(err);
             });
     },
     remove(req, res) {
@@ -53,11 +57,11 @@ module.exports = {
                         return res.json({ mensagem: 'Deletado' });
                     })
                     .catch((err) => {
-                        return res.json({ mensagem: 'Ocorreu um erro' })
+                        return res.status(500).json({ mensagem: 'Ocorreu um erro' })
                     });
             })
             .catch((err) => {
-                return res.json(err);
+                return res.status(500).json(err);
             });
     },
 };

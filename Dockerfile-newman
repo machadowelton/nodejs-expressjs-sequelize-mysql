@@ -1,0 +1,5 @@
+FROM node:8
+COPY node-express-sequelize-mysql.postman_collection.json /usr/src/tests-newman-app/
+COPY wait-host-container.py /usr/src/tests-newman-app/
+WORKDIR /usr/src/tests-newman-app
+RUN npm install -g newman

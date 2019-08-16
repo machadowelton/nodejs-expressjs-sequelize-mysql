@@ -4,22 +4,22 @@ module.exports = {
   up: (queryInterface, Sequelize) => {
     return queryInterface.bulkInsert('Alunos',[
       {
-        nome_aluno: 'Joyvis Santana',
+        nomeAluno: 'Joyvis Santana',
         createdAt: new Date(),
         updatedAt: new Date(),
-        SalaAulaId: 1
+        salaAulaId: 1
       },
       {
-        nome_aluno: 'Richard William',
+        nomeAluno: 'Richard William',
         createdAt: new Date(),
         updatedAt: new Date(),
-        SalaAulaId: 2
+        salaAulaId: 2
       },
       {
-        nome_aluno: 'Welton Machado',
+        nomeAluno: 'Welton Machado',
         createdAt: new Date(),
         updatedAt: new Date(),
-        SalaAulaId: 2
+        salaAulaId: 2
       }
     ],{});
   },

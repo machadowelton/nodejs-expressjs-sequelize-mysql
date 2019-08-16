@@ -2,21 +2,23 @@
 
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.bulkInsert('SalaAulas', [
+    return queryInterface.bulkInsert('Cursos',[
       {
-        nomeSala: 'brasil',
+        nomeCurso: 'Java',
+        apresentadorId: 1,
         createdAt: new Date(),
         updatedAt: new Date()
       },
       {
-        nomeSala: 'argentina',
+        nomeCurso: 'NODES',
+        apresentadorId: 2,
         createdAt: new Date(),
         updatedAt: new Date()
       }
-    ], {});
+    ],{});
   },
 
   down: (queryInterface, Sequelize) => {
-    return queryInterface.bulkDelete('SalaAulas', null, {});
+    return queryInterface.bulkDelete('Cursos', null, {});
   }
 };

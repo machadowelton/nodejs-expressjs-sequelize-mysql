@@ -18,6 +18,20 @@ services:
             && npx sequelize db:migrate
             && npx sequelize db:seed:all
             && node server.js"
+    teste-newman:
+        build:
+            context: .
+            dockerfile: Dockerfile-newman
+        image: 'test-newman'
+        container_name: test-newman
+        restart: on-failure
+        environment: 
+            DB_IP_HOST: ${DB_IP_HOST}
+            DB_PORT: 3306
+        command: > 
+            bash -c "python wait-host-container.py $${DB_IP_HOST} $${DB_PORT}
+            && sed -i 's/{{host_app}}/'$$DB_IP_HOST'/g' node-express-sequelize-mysql.postman_collection.json
+            && newman run node-express-sequelize-mysql.postman_collection.json"
     db:
         image: 'mysql:5.7'
         container_name: express_sequelize

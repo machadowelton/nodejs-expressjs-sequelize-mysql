@@ -6,20 +6,27 @@ app.use(compression());
 app.use(bodyparser.urlencoded({ extended : false}));
 app.use(bodyparser.json());
 const port = process.env.PORT || 8000;
-const routerInicial = express.Router();
-const routerAluno = require('./app/routes/aluno');
-const routerSalaAula = require('./app/routes/salaaula');
+const routeInicial = express.Router();
+const routeAluno = require('./app/routes/aluno');
+const routeSalaAula = require('./app/routes/salaaula');
+const routeApresentador = require('./app/routes/apresentador');
+const routeCurso = require('./app/routes/curso');
+const routeAlunoCurso = require('./app/routes/alunocurso');
 
-routerInicial.get('/status', (req, res) => {
+
+
+routeInicial.get('/status', (req, res) => {
     res.json({status:'ok'});
 });
 
-
-routers = [
-    routerInicial,
-    routerAluno,
-    routerSalaAula
+routes = [
+    routeInicial,
+    routeAluno,
+    routeSalaAula,
+    routeApresentador,
+    routeCurso,
+    routeAlunoCurso
 ];
 
-app.use('/api', routers);
+app.use('/api', routes);
 app.listen(port);

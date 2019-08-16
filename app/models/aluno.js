@@ -1,15 +1,18 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
   const Aluno = sequelize.define('Aluno', {
-    nome_aluno: DataTypes.STRING,
-    SalaAulaId: DataTypes.INTEGER
+    nomeAluno: DataTypes.STRING,
+    salaAulaId: DataTypes.INTEGER
   }, {});
   Aluno.associate = function(models) {
-    Aluno.belongsTo(models.SalaAula);
+    Aluno.belongsTo(models.SalaAula,{
+      foreignKey: 'salaAulaId',
+      as: 'salaAulas'
+    });
     Aluno.belongsToMany(models.Curso, {
       through: 'AlunoCurso',
       as: 'cursos',
-      foreignKey: 'id_aluno'
+      foreignKey: 'alunoId'
     });
   };
   return Aluno;
